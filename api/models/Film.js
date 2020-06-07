@@ -1,24 +1,44 @@
-var Waterline = require('waterline');
-var sailsDiskAdapter = require('sails-disk');
-var waterline = new Waterline();
+/**
+ * Film.js
+ *
+ * @description :: A model definition represents a database table/collection.
+ * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
+ */
 
-var filmCollection = Waterline.Collection.extend({
-  identity: 'films',
-  datastore: 'default',
-  primaryKey: 'id',
-
+module.exports = {
+  tableName: 'films',
   attributes: {
     id: {
       type: 'number',
-      autoMigrations: {autoIncrement: true}
+      unique: true,
+      required: true,
     },
-    firstName: {type:'string'},
-    lastName: {type:'string'},
-
-    // Add a reference to Pets
-    categories: {
-      collection: 'pet',
-      via: 'owner'
+    sort: {
+      type: 'number',
+    },
+    content: 'string',
+    title: {
+      type: 'string'
+    },
+    image: {
+      type: 'string'
+    },
+    /*categoryId: {
+      columnName: 'category_id',
+      type: 'number',
+    },*/
+    createdAt: false,
+    updatedAt: false,
+    category: {
+      columnName: 'category_id',
+      model: 'category',
+      unique: true,
     }
+  },
+  associations: function () {
+    // Film.belongsToMany(Category, {through: FilmsCategories, foreignKey: 'film_id', as: "categories"});
+    // Film.belongsTo(Category, {foreignKey: 'categoryId', as: "category"});
   }
-});
+
+};
+

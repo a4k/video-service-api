@@ -9,11 +9,7 @@ module.exports = {
 
   find: function (req, res) {
 
-    sails.models.film.find({
-        include: [{model: Category, as: 'categories', through: {attributes: []}}],
-        order: [['sort', 'ASC']]
-      }
-    ).exec((err, films) => {
+    sails.models.film.find().populate('category').exec((err, films) => {
       if (err) {
         switch (err.name) {
           case 'UsageError':
@@ -27,11 +23,7 @@ module.exports = {
         return res.notFound();
       }
 
-      return res.ok({
-        model: 'film',
-        luckyCoolNumber: Math.ceil(10 * Math.random()),
-        record: films
-      });
+      return res.ok(films);
     });
 
   },

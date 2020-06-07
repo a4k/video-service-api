@@ -19,9 +19,21 @@ module.exports = {
     sort: {
       type: 'number',
     },
+    createdAt: {
+      columnName: 'created_at',
+      type: 'number',
+    },
+    updatedAt: {
+      columnName: 'updated_at',
+      type: 'number',
+    },
+    films: {
+      collection:'film',
+      via: 'category'
+    }
   },
   associations: function () {
-    Category.belongsToMany(Film, {through: FilmsCategories, foreignKey: 'categoryId', as: "films"});
+    // Category.belongsToMany(Film, {through: FilmsCategories, foreignKey: 'categoryId', as: "films"});
   }
 
 };

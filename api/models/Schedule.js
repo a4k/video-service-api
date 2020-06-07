@@ -13,13 +13,10 @@ module.exports = {
       unique: true,
       required: true,
     },
-    sort: {
-      type: 'number',
-    },
+    sort: 'number',
     time: 'string',
-    title: {
-      type: 'string'
-    },
+    title:  'string',
+    active:  'number',
     createdAt: false,
     updatedAt: false,
     tvId: {

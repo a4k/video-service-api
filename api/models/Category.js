@@ -13,20 +13,11 @@ module.exports = {
       unique: true,
       required: true,
     },
-    title: {
-      type: 'string',
-    },
-    sort: {
-      type: 'number',
-    },
-    createdAt: {
-      columnName: 'created_at',
-      type: 'number',
-    },
-    updatedAt: {
-      columnName: 'updated_at',
-      type: 'number',
-    },
+    title: 'string',
+    code: 'string',
+    sort: 'number',
+    createdAt: false,
+    updatedAt: false,
     films: {
       collection:'film',
       via: 'category'

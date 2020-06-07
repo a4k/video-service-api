@@ -25,6 +25,7 @@ module.exports.routes = {
   'get /api/v1/tv': 'TvController.find',
   'get /api/v1/comments': 'CommentsController.find',
   'post /api/v1/comments': {controller: 'CommentsController', action: 'create'},
+  'post /api/v1/comments/:id': {controller: 'CommentsController', action: 'destroy'},
   'post /api/v1/users/login': {controller: 'UsersController', action: 'login'},
 
 

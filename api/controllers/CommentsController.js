@@ -10,10 +10,10 @@ module.exports = {
     let where = {};
     const filmId = req.param('film');
     if (filmId) {
-      where['film_id'] = filmId;
+      where['id'] = filmId;
     }
 
-    sails.models.comment.find().populate('film').populate('user').exec((err, tv) => {
+    sails.models.comment.find(where).populate('film').populate('user').exec((err, comment) => {
       if (err) {
         switch (err.name) {
           case 'UsageError':
@@ -23,30 +23,54 @@ module.exports = {
         }
       }
 
-      if (!tv) {
+      if (!comment) {
         return res.notFound();
       }
 
-      return res.ok(tv);
+      return res.ok(comment);
     });
 
   },
   create: function (req, res) {
-    const userId = req.param('user');
-    const filmId = req.param('film');
+    const userId = req.param('user_id');
+    const filmId = req.param('film_id');
     const content = req.param('content');
 
 
-    sails.models.comment
-      .create({user_id: userId, film_id: filmId, content: content})
-      .then((record) => {
-        res.ok(record);
-        return true;
-      }).catch((err) => {
-        return res.negotiate(err);
+    sails.models.comment.query('INSERT INTO comments (user_id, film_id, content) VALUES ($1, $2, $3)', [userId, filmId, content],
+      function (err, record) {
+        if (err) {
+          return res.serverError(err);
+        }
+
+        sails.models.comment.findOne({id: record.insertId}).populate('film').populate('user').exec((err, comment) => {
+          if (err) {
+            switch (err.name) {
+              case 'UsageError':
+                return res.badRequest(err);
+              default:
+                return res.serverError(err);
+            }
+          }
+
+          if (!comment) {
+            return res.notFound();
+          }
+
+          return res.ok(comment);
+        });
       });
 
-    return res.ok();
+  },
+  destroy: function (req, res) {
+    const id = req.param('id');
+
+    sails.models.comment.destroy({id: id}).exec(err => {
+      if (err) {
+        return res.serverError(err);
+      }
+      return res.ok({id: id});
+    });
 
   },
 

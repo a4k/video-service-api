@@ -1,15 +1,14 @@
 /**
- * FilmsController
+ * TvController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-
   find: function (req, res) {
 
-    sails.models.film.find().populate('category').populate('comments').exec((err, films) => {
+    sails.models.tv.find().populate('schedule').exec((err, tv) => {
       if (err) {
         switch (err.name) {
           case 'UsageError':
@@ -19,14 +18,13 @@ module.exports = {
         }
       }
 
-      if (!films) {
+      if (!tv) {
         return res.notFound();
       }
 
-      return res.ok(films);
+      return res.ok(tv);
     });
 
   },
-
 };
 

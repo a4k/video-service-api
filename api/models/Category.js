@@ -13,7 +13,7 @@ module.exports = {
       unique: true,
       required: true,
     },
-    name: {
+    title: {
       type: 'string',
     },
     sort: {

@@ -22,6 +22,10 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   'get /api/v1/films': 'FilmsController.find',
   'get /api/v1/categories': 'CategoriesController.find',
+  'get /api/v1/tv': 'TvController.find',
+  'get /api/v1/comments': 'CommentsController.find',
+  'post /api/v1/comments': {controller: 'CommentsController', action: 'create'},
+  'post /api/v1/users/login': {controller: 'UsersController', action: 'login'},
 
 
   /***************************************************************************

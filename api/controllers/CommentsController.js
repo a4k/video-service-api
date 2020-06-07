@@ -10,7 +10,7 @@ module.exports = {
     let where = {};
     const filmId = req.param('film');
     if (filmId) {
-      where['id'] = filmId;
+      where['film'] = filmId;
     }
 
     sails.models.comment.find(where).populate('film').populate('user').exec((err, comment) => {

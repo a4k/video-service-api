@@ -1,4 +1,6 @@
-# todos-api
+# videoservice-api
+
+you need to install *videoservice.sql*
 
 a [Sails v1](https://sailsjs.com) application
 

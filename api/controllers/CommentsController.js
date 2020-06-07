@@ -13,7 +13,7 @@ module.exports = {
       where['film'] = filmId;
     }
 
-    sails.models.comment.find(where).populate('film').populate('user').exec((err, comment) => {
+    sails.models.comment.find(where).populate('film').populate('user').sort('id DESC').exec((err, comment) => {
       if (err) {
         switch (err.name) {
           case 'UsageError':

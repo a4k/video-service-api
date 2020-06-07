@@ -26,7 +26,9 @@ module.exports.routes = {
   'get /api/v1/comments': 'CommentsController.find',
   'post /api/v1/comments': {controller: 'CommentsController', action: 'create'},
   'post /api/v1/comments/:id': {controller: 'CommentsController', action: 'destroy'},
+  'get /api/v1/users/:id': 'UsersController.findOne',
   'post /api/v1/users/login': {controller: 'UsersController', action: 'login'},
+  'post /api/v1/users/update': {controller: 'UsersController', action: 'update'},
 
 
   /***************************************************************************

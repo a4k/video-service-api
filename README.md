@@ -1,6 +1,18 @@
-# videoservice-api
+# Видеосервис API
 
-you need to install *videoservice.sql*
+## Установка
+Установить базу данных `videoservice.sql`
+
+Поменять подключение к базе данных в `config/datastores.js`
+
+Установить модули `npm install`
+
+Запустить командой `sails lift`
+
+
+## Пользователи:
+1. username: test, password: test
+2. username: username, password: username
 
 a [Sails v1](https://sailsjs.com) application
 

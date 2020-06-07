@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 07, 2020 at 07:18 PM
+-- Generation Time: Jun 07, 2020 at 10:15 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.0
 
@@ -65,7 +65,11 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `content`, `film_id`, `user_id`, `sort`) VALUES
 (2, 'sdf', 1, 1, 500),
-(4, 'sdfsdf', 1, 1, 500);
+(11, 'xxx', 1, 2, 500),
+(12, 'n', 1, 1, 500),
+(13, 'xxx', 1, 1, 500),
+(14, 'f', 1, 2, 500),
+(15, 'af', 1, 1, 500);
 
 -- --------------------------------------------------------
 
@@ -167,7 +171,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`) VALUES
-(1, 'test', 'test', 'testt');
+(1, 'test', 'test', 'testtdf'),
+(2, 'username', 'username', 'username');
 
 --
 -- Indexes for dumped tables
@@ -223,7 +228,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `films`
@@ -247,7 +252,7 @@ ALTER TABLE `tv`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,7 +15,7 @@
     "sails-hook-orm": "^2.1.1",
     "sails-hook-sockets": "^2.0.0",
     "sails-mysql": "^1.0.1",
-    "sequelize": "^5.21.12",
+    "sequelize": "^6.29.0",
     "sequelize-cli": "^5.5.1",
     "waterline": "^0.13.6"
   },
